@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Quality Report</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#1c1d1f;--muted:#6b6d72;--line:#e3e1db;
+--crit:#b3261e;--crit-bg:#fbe9e7;--warn:#9a6700;--warn-bg:#fff4d6;--info:#2f5d8a;--info-bg:#e8f0f8;
+--ok:#2e7d4f;--c100:#2e7d4f;--c50:#e0a100;--c0:#c0392b;--cnone:#ebe9e3;--cext:#8e7cc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15161a;--card:#1d1f24;--ink:#e8e6e1;
+--muted:#9a9ca3;--line:#2c2f36;--crit-bg:#3a1d1b;--warn-bg:#352c14;--info-bg:#1a2835;--cnone:#2a2c31}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.5 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}h2{font-size:18px;margin:34px 0 10px}
+.sub{color:var(--muted);margin:0 0 22px}
+.status{display:inline-block;padding:3px 10px;border-radius:99px;font-weight:600;font-size:13px}
+.passed{background:#e3f3e8;color:var(--ok)}.failed{background:var(--crit-bg);color:var(--crit)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card b{display:block;font-size:28px;line-height:1.1}.card span{color:var(--muted);font-size:13px}
+.card.crit b{color:var(--crit)}.card.warn b{color:var(--warn)}.card.info b{color:var(--info)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13.5px}
+td.per{white-space:nowrap}th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sev{font-size:11px;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:5px;white-space:nowrap}
+.sev.critical{background:var(--crit-bg);color:var(--crit)}.sev.warning{background:var(--warn-bg);color:var(--warn)}
+.sev.info{background:var(--info-bg);color:var(--info)}
+.scroll{overflow-x:auto}.grid{border-collapse:separate;border-spacing:2px;border:0;background:none;table-layout:fixed;min-width:760px}.grid col.labc{width:150px}
+.grid td,.grid th{border:0;padding:0}.grid th{font-size:9px;overflow:hidden;text-align:center;padding:0 0 4px;text-transform:none}
+.grid td.lab{font-size:12.5px;padding-right:10px;white-space:nowrap;text-align:right;color:var(--ink)}
+.cell{width:100%;height:18px;border-radius:3px;background:var(--cnone)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+code{font-size:12px;color:var(--muted)}
+</style></head><body><main>
+<h1>Data Quality Report</h1>
+<p class="sub">Run 1 &middot; 27 Sep 2026 23:45 &middot; <span class="status failed">FAILED</span>
+&middot; times in Pakistan Standard Time (UTC+05:00), hour-beginning</p>
+
+<div class="cards">
+ <div class="card crit"><b>3</b><span>critical issues</span></div>
+ <div class="card warn"><b>22</b><span>warnings</span></div>
+ <div class="card info"><b>11</b><span>assurance checks passed</span></div>
+ <div class="card"><b>133,127</b><span>rows in the warehouse</span></div>
+</div>
+
+<h2>Coverage by month</h2>
+<div class="scroll"><table class="grid"><col class="labc">
+<tr><th></th><th>Jul<br>24</th><th>A</th><th>S</th><th>O</th><th>N</th><th>D</th><th>Jan<br>25</th><th>F</th><th>M</th><th>A</th><th>M</th><th>J</th><th>Jul<br>25</th><th>A</th><th>S</th><th>O</th><th>N</th><th>D</th><th>Jan<br>26</th><th>F</th><th>M</th><th>A</th><th>M</th><th>J</th><th>Jul<br>26</th><th>A</th></tr>
+<tr><td class="lab">Price: ISMO official</td>
+<td><div class="cell" style="background:var(--c100)" title="Jul 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Aug 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Sep 2024: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Oct 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Nov 2024: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Dec 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jan 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Feb 2025: 672 of 672 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Mar 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Apr 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="May 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jun 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jul 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Aug 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Sep 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Oct 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Nov 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Dec 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jan 2026: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Feb 2026: 672 of 672 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Mar 2026: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Apr 2026: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="May 2026: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jun 2026: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jul 2026: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Aug 2026: 744 of 744 hours"></div></td></tr><tr><td class="lab">Demand (excl. KE)</td>
+<td><div class="cell" style="background:var(--c100)" title="Jul 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Aug 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Sep 2024: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Oct 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Nov 2024: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Dec 2024: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jan 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Feb 2025: 672 of 672 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Mar 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Apr 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="May 2025: 744 of 744 hours"></div></td><td><div class="cell" style="background:var(--c100)" title="Jun 2025: 720 of 720 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Jul 2025: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Aug 2025: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Sep 2025: 0 of 720 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Oct 2025: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Nov 2025: 0 of 720 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Dec 2025: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Jan 2026: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Feb 2026: 0 of 672 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Mar 2026: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Apr 2026: 0 of 720 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="May 2026: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Jun 2026: 0 of 720 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Jul 2026: 0 of 744 hours"></div></td><td><div class="cell" style="background:var(--cnone)" title="Aug 2026: 0 of 744 hours"></div></td></tr>
+</table></div>
+<div class="legend"><span><i style="background:var(--c100)"></i>complete</span><span><i style="background:var(--c50)"></i>partial</span>
+<span><i style="background:var(--c0)"></i>under 50%</span><span><i style="background:var(--cext)"></i>present but not in any official source</span>
+<span><i style="background:var(--cnone)"></i>no data</span></div>
+
+<h2>Issues</h2>
+<table><tr><th>Severity</th><th>Check</th><th>Dataset</th><th>Period</th><th>Count</th><th>Detail</th></tr>
+<tr><td><span class="sev critical">critical</span></td><td>misfiled</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Jul 2024</td><td class="num">5</td><td>Published as Jul 2024 but the whole workbook is Jun 2024's (identical to the file published for that earlier month); file a56484f3, posted in 5 section(s): DISCO's Consumption, Fuel Mix, Hourly Generation Profile, Marginal Price vs Demand, System at Glance. Anyone using ISMO's site for Jul 2024 gets the wrong month.</td></tr><tr><td><span class="sev critical">critical</span></td><td>misfiled</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Jan 2025</td><td class="num">1</td><td>Published as Jan 2025 but the whole workbook is Mar 2025's (identical file also published as that month, and it fits that month's hourly prices); file f2cf7e0b, posted in 1 section(s): Marginal Price vs Demand. Anyone using ISMO's site for Jan 2025 gets the wrong month.</td></tr><tr><td><span class="sev critical">critical</span></td><td>misfiled</td>
+<td>ismo_monthly_profiles</td><td class="per">01–30 Apr 2025</td><td class="num">4</td><td>Published as Apr 2025 but the whole workbook is Mar 2025's (identical file also published as that month, and it fits that month's hourly prices); file f2cf7e0b, posted in 4 section(s): DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance. Anyone using ISMO's site for Apr 2025 gets the wrong month.</td></tr><tr><td><span class="sev warning">warning</span></td><td>archive integrity</td>
+<td>ismo_archive</td><td class="per"></td><td class="num">16</td><td>16 files listed in ISMO's own index no longer exist on its server: DISCOs Consumption July 2026; DISCOs Consumption June 2026; Detailed Design Of CTBCM In Pakistan 10-06-2021; Fuel Mix July 2026; Fuel Mix June 2026; Hourly Generation July 2026; Hourly Generation June 2026; Introduction To CTBCM In Pakistan 31-03-2021; June 2026; Marginal Cost Vs Demand July 2026; Marginal Price July 2024 to June 2026; Marginal Price Vs demand June 2026; System at a Glance July 2026; System at a Glance June 2026</td></tr><tr><td><span class="sev warning">warning</span></td><td>archive integrity</td>
+<td>ismo_archive</td><td class="per"></td><td class="num">1</td><td>File published in ISMO's market-data section is not market data (no market-data sheets; original file 'BD Outreach - Extended Sizes_ismo_qAdI09AsR8.xlsx'). Not loaded, and its contents were not read.</td></tr><tr><td><span class="sev warning">warning</span></td><td>cross source</td>
+<td>ismo_monthly_profiles</td><td class="per">01–28 Feb 2025</td><td class="num">24</td><td>Feb 2025: published price profile does not reconcile with ISMO's own hourly prices (average gap Rs 10.98/kWh); it is not the monthly average of the hourly data</td></tr><tr><td><span class="sev warning">warning</span></td><td>cross source</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Aug 2026</td><td class="num">24</td><td>Aug 2026: published price profile does not reconcile with ISMO's own hourly prices (average gap Rs 6.36/kWh); it is not the monthly average of the hourly data</td></tr><tr><td><span class="sev warning">warning</span></td><td>format change</td>
+<td>cppa_plant_costs</td><td class="per">Apr 2026</td><td class="num">135</td><td>Apr 2026: plant count jumps to 135 (+108%) with no matching change in energy: CPPA-G changed how plants are listed, so plant-level series are not comparable across this date</td></tr><tr><td><span class="sev warning">warning</span></td><td>freshness</td>
+<td>demand_national_excl_ke</td><td class="per"></td><td class="num"></td><td>Hourly demand published only up to 30 Jun 2025 while prices run to 31 Aug 2026</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–28 Feb 2025</td><td class="num">24</td><td>Feb 2025 marginal_cost_rs_kwh: correctly filed copies of this month disagree on 24 values (largest gap 15.96); ISMO re-issued the month with changed numbers. The copy posted 20 Mar 2025 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Mar 2025</td><td class="num">61</td><td>Mar 2025 disco_demand_mw: correctly filed copies of this month disagree on 61 values (largest gap 19.61); ISMO re-issued the month with changed numbers. The copy posted 20 Apr 2025 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Mar 2025</td><td class="num">3</td><td>Mar 2025 disco_energy_gwh: correctly filed copies of this month disagree on 3 values (largest gap 0.47); ISMO re-issued the month with changed numbers. The copy posted 20 Apr 2025 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Mar 2025</td><td class="num">100</td><td>Mar 2025 gen_mw: correctly filed copies of this month disagree on 100 values (largest gap 458.43); ISMO re-issued the month with changed numbers. The copy posted 20 Apr 2025 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Mar 2025</td><td class="num">24</td><td>Mar 2025 marginal_cost_rs_kwh: correctly filed copies of this month disagree on 24 values (largest gap 18.50); ISMO re-issued the month with changed numbers. The copy posted 20 Apr 2025 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>monthly consistency</td>
+<td>ismo_monthly_profiles</td><td class="per">01–31 Jan 2026</td><td class="num">15</td><td>Jan 2026 marginal_cost_rs_kwh: correctly filed copies of this month disagree on 15 values (largest gap 1.19); ISMO re-issued the month with changed numbers. The copy posted 20 Feb 2026 in 'Marginal Price vs Demand' matches the hourly prices exactly; the earlier copy in DISCO's Consumption, Fuel Mix, Hourly Generation Profile, System at Glance was never replaced.</td></tr><tr><td><span class="sev warning">warning</span></td><td>physical balance</td>
+<td>generation_vs_demand</td><td class="per">06–07 Sep 2024</td><td class="num">11</td><td>11 hours where metered demand exceeds total generation (worst -6.1%): physically impossible, likely metering or reporting error</td></tr><tr><td><span class="sev warning">warning</span></td><td>range</td>
+<td>generation_plant</td><td class="per"></td><td class="num">2,064</td><td>HPS WAPDA Tarbela: 2064 hours above 115% of its listed dependable capacity (3478 MW listed, peak 5015 MW). More likely a registry mismatch (units combined in the generation feed but listed separately in the capacity table) than real overproduction; the capacity figure should be corrected before use.</td></tr><tr><td><span class="sev warning">warning</span></td><td>range</td>
+<td>generation_plant</td><td class="per"></td><td class="num">138</td><td>HPS WAPDA Mangla: 138 hours above 115% of its listed dependable capacity (920 MW listed, peak 1147 MW). More likely a registry mismatch (units combined in the generation feed but listed separately in the capacity table) than real overproduction; the capacity figure should be corrected before use.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">Oct 2023 – Dec 2023</td><td class="num">3</td><td>gen_mw_share_sheet: hourly figures for 7 series (bagasse, coal, hydro, nuclear, solar, thermal_other, wind) are identical to Sep 2023's in 3 later workbook(s) (Oct 2023 to Dec 2023). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Sep 2023's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">01–29 Feb 2024</td><td class="num">1</td><td>disco_demand_mw: hourly figures for 1 series (PESCO) are identical to Jan 2024's in 1 later workbook(s) (Feb 2024). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Jan 2024's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">01–29 Feb 2024</td><td class="num">1</td><td>marginal_cost_rs_kwh: hourly figures for 1 series (system) are identical to Jan 2024's in 1 later workbook(s) (Feb 2024). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Jan 2024's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">Apr 2024 – Aug 2026</td><td class="num">21</td><td>gen_mw_share_sheet: hourly figures for 7 series (bagasse, coal, hydro, nuclear, solar, thermal_other, wind) are identical to Mar 2024's in 21 later workbook(s) (Apr 2024 to Aug 2026). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Mar 2024's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">01–28 Feb 2025</td><td class="num">1</td><td>gen_mw: hourly figures for 1 series (thermal_other) are identical to Jan 2025's in 1 later workbook(s) (Feb 2025). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Jan 2025's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">01–28 Feb 2025</td><td class="num">1</td><td>marginal_cost_rs_kwh: hourly figures for 1 series (system) are identical to Jan 2025's in 1 later workbook(s) (Feb 2025). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets Jan 2025's numbers.</td></tr><tr><td><span class="sev warning">warning</span></td><td>stale sheet</td>
+<td>ismo_monthly_profiles</td><td class="per">Jun 2025 – Sep 2025</td><td class="num">4</td><td>gen_mw_share_sheet: hourly figures for 7 series (bagasse, coal, hydro, nuclear, solar, thermal_other, wind) are identical to May 2025's in 4 later workbook(s) (Jun 2025 to Sep 2025). The sheet was carried forward instead of being recalculated; anyone reading these hourly values gets May 2025's numbers.</td></tr><tr><td><span class="sev info">info</span></td><td>completeness</td>
+<td>price_official</td><td class="per">Jul 2024 – Aug 2026</td><td class="num">19,008</td><td>All 19,008 hours present from 01 Jul 2024 to 31 Aug 2026</td></tr><tr><td><span class="sev info">info</span></td><td>completeness</td>
+<td>demand_national_excl_ke</td><td class="per">Jul 2024 – Jun 2025</td><td class="num">8,760</td><td>All 8,760 hours present</td></tr><tr><td><span class="sev info">info</span></td><td>completeness</td>
+<td>generation_plant</td><td class="per"></td><td class="num">130</td><td>All 130 plants report all 8,760 hours</td></tr><tr><td><span class="sev info">info</span></td><td>completeness</td>
+<td>cppa_plant_costs</td><td class="per"></td><td class="num">24</td><td>All 24 months present (Jul 2024 to Jun 2026)</td></tr><tr><td><span class="sev info">info</span></td><td>completeness</td>
+<td>weather</td><td class="per"></td><td class="num">496,512</td><td>12 locations, 496,512 hourly observations to 20 Sep 2026</td></tr><tr><td><span class="sev info">info</span></td><td>cross source</td>
+<td>ismo_monthly_profiles</td><td class="per"></td><td class="num">24</td><td>24 correctly filed months reconcile with the hourly prices (median gap Rs 0.00/kWh)</td></tr><tr><td><span class="sev info">info</span></td><td>flat run</td>
+<td>price_official</td><td class="per"></td><td class="num">1,031</td><td>59 stretches of 12+ hours at an unchanged price; longest 55 hours at Rs 21.84 from 09 Dec 2024. Plausible when one plant stays marginal; a feed stuck on one value would look the same, so these are listed for review.</td></tr><tr><td><span class="sev info">info</span></td><td>freshness</td>
+<td>price_official</td><td class="per"></td><td class="num"></td><td>Up to date: latest hour 31 Aug 2026 23:00</td></tr><tr><td><span class="sev info">info</span></td><td>ingest</td>
+<td>ismo_monthly_profiles</td><td class="per"></td><td class="num">9</td><td>9 early files (Dec 2022 to Mar 2023) are single-day snapshots, not monthly averages; kept on disk, not loaded</td></tr><tr><td><span class="sev info">info</span></td><td>physical balance</td>
+<td>generation_vs_demand</td><td class="per"></td><td class="num">8,760</td><td>Generation exceeds metered demand by 2.7% (median), consistent with transmission losses</td></tr><tr><td><span class="sev info">info</span></td><td>version consistency</td>
+<td>price_official</td><td class="per"></td><td class="num">18,264</td><td>5 published versions compared over 18,264 overlapping hours: no past value was ever revised</td></tr>
+</table>
+
+<h2>What is in the warehouse</h2>
+<table><tr><th>Table</th><th>Rows</th><th>From</th><th>To</th></tr>
+<tr><td>fact_price_hourly</td><td class="num">88,392</td><td>01 Jul 2024</td><td>31 Aug 2026</td></tr><tr><td>fact_demand_hourly</td><td class="num">8,760</td><td>01 Jul 2024</td><td>30 Jun 2025</td></tr><tr><td>fact_generation_hourly</td><td class="num">0</td><td></td><td></td></tr><tr><td>fact_weather_hourly</td><td class="num">0</td><td></td><td></td></tr><tr><td>fact_price_forecast_external</td><td class="num">35,112</td><td>01 Jul 2025</td><td>31 Dec 2027</td></tr><tr><td>fact_fuel_price_monthly</td><td class="num">520</td><td>Jan 2018</td><td>Aug 2026</td></tr><tr><td>ref_grid_charges</td><td class="num">16</td><td></td><td></td></tr><tr><td>dim_plant</td><td class="num">130</td><td></td><td></td></tr><tr><td>dim_source_file</td><td class="num">197</td><td></td><td></td></tr>
+</table>
+
+<h2>Source files</h2>
+<table><tr><th>#</th><th>Title</th><th>Role</th><th>Published</th><th>SHA-256</th></tr>
+<tr><td class="num">1</td><td>Hourly Marginal Price July 2024 to Apr 2026</td><td>official</td>
+<td>03 Jun 2026</td><td><code>f07526a9b027dd77</code></td></tr><tr><td class="num">2</td><td>Hourly Marginal Price July 2024 to May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>a403b500fdf463b8</code></td></tr><tr><td class="num">3</td><td>Marginal Price July 2024 to July 2026</td><td>official</td>
+<td>17 Jul 2026</td><td><code>1cee8728819cf934</code></td></tr><tr><td class="num">4</td><td>Hourly Marginal Price July 2024 to Aug 2026</td><td>official</td>
+<td>16 Sep 2026</td><td><code>05d8e132fb57ad82</code></td></tr><tr><td class="num">5</td><td>Hourly System Marginal Price FY 2025 - 2026</td><td>official</td>
+<td>18 Sep 2025</td><td><code>1cee8728819cf934</code></td></tr><tr><td class="num">7</td><td>Hourly System Demand FY 2025</td><td>official</td>
+<td>18 Sep 2025</td><td><code>e114cfee56175797</code></td></tr><tr><td class="num">8</td><td>Hourly Generation Data (FY 2025)</td><td>official</td>
+<td>24 Dec 2025</td><td><code>bf9b19582b47ca9a</code></td></tr><tr><td class="num">9</td><td>karachi 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>4a3cbd1df9fbb665</code></td></tr><tr><td class="num">10</td><td>hyderabad 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>b668ddbd99727201</code></td></tr><tr><td class="num">11</td><td>sukkur 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>14163a1ce397d7dd</code></td></tr><tr><td class="num">12</td><td>quetta 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>ec37fa73afd94ffc</code></td></tr><tr><td class="num">13</td><td>multan 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>331873afbb345c26</code></td></tr><tr><td class="num">14</td><td>faisalabad 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>b96c92614ed4500c</code></td></tr><tr><td class="num">15</td><td>lahore 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>2b9fe9b34add2b4e</code></td></tr><tr><td class="num">16</td><td>gujranwala 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>a5d5104be27610ed</code></td></tr><tr><td class="num">17</td><td>islamabad 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>5f987cf27abc3b18</code></td></tr><tr><td class="num">18</td><td>peshawar 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>d098b06389a00cfe</code></td></tr><tr><td class="num">19</td><td>jhimpir 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>857402c1b9fae0b8</code></td></tr><tr><td class="num">20</td><td>bahawalpur 2026-01-01..2026-09-20</td><td>reference</td>
+<td></td><td><code>7eb63ca845f7351a</code></td></tr><tr><td class="num">21</td><td>DISCO's Consumption Sep 2023</td><td>official</td>
+<td>12 Oct 2023</td><td><code>b622e34cf5d30252</code></td></tr><tr><td class="num">22</td><td>DISCO's Consumption Nov 23</td><td>official</td>
+<td>12 Dec 2023</td><td><code>09818371624ebed8</code></td></tr><tr><td class="num">23</td><td>DISCO's Consumption Dec 23</td><td>official</td>
+<td>17 Jan 2024</td><td><code>8f34098ae7bd92e2</code></td></tr><tr><td class="num">24</td><td>DISCO's Consumption Jan 24</td><td>official</td>
+<td>15 Feb 2024</td><td><code>fbc9d07490d9c94a</code></td></tr><tr><td class="num">25</td><td>DISCO's Consumption Feb 2024</td><td>official</td>
+<td>15 Mar 2024</td><td><code>8a59e0a155d8b539</code></td></tr><tr><td class="num">26</td><td>DISCO's Consumption Mar 24</td><td>official</td>
+<td>17 Apr 2024</td><td><code>b5016cb744995266</code></td></tr><tr><td class="num">27</td><td>DISCO's Consumption April 24</td><td>official</td>
+<td>15 May 2024</td><td><code>e3188f91646f8b67</code></td></tr><tr><td class="num">28</td><td>DISCO's Consumption May 24</td><td>official</td>
+<td>02 Jul 2024</td><td><code>c707957e8846cddb</code></td></tr><tr><td class="num">29</td><td>DISCO's Consumption June 24</td><td>official</td>
+<td>07 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">30</td><td>DISCO's Consumption July 24</td><td>official</td>
+<td>18 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">31</td><td>DISCO's Consumption Aug 24</td><td>official</td>
+<td>20 Sep 2024</td><td><code>088b669e4393a6da</code></td></tr><tr><td class="num">32</td><td>DISCO's Consumption Sep 2024</td><td>official</td>
+<td>18 Oct 2024</td><td><code>0dba1f799578bea2</code></td></tr><tr><td class="num">33</td><td>DISCO's Consumption Oct 24</td><td>official</td>
+<td>18 Nov 2024</td><td><code>8438bba1b0f2f95f</code></td></tr><tr><td class="num">34</td><td>DISCO's Consumption Nov 24</td><td>official</td>
+<td>18 Dec 2024</td><td><code>c9cd351de18e3968</code></td></tr><tr><td class="num">35</td><td>DISCO's Consumption Dec 24</td><td>official</td>
+<td>14 Jan 2025</td><td><code>30898917d9c11e36</code></td></tr><tr><td class="num">36</td><td>DISCO's Consumption Jan 25</td><td>official</td>
+<td>25 Feb 2025</td><td><code>35669469178db49b</code></td></tr><tr><td class="num">37</td><td>DISCO's Consumption Feb 2025</td><td>official</td>
+<td>18 Mar 2025</td><td><code>d68ee78d3ec4f9c1</code></td></tr><tr><td class="num">38</td><td>DISCO's Consumption Mar 25</td><td>official</td>
+<td>17 Apr 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">39</td><td>DISCO's Consumption April 25</td><td>official</td>
+<td>04 Jun 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">40</td><td>DISCO's Consumption May 25</td><td>official</td>
+<td>20 Jun 2025</td><td><code>6d6433d0f2d7131b</code></td></tr><tr><td class="num">41</td><td>DISCO's Consumption Jun 25</td><td>official</td>
+<td>21 Jul 2025</td><td><code>e90d42ff5d227333</code></td></tr><tr><td class="num">42</td><td>DISCO's Consumption July 25</td><td>official</td>
+<td>19 Aug 2025</td><td><code>f0a497818ca7b88d</code></td></tr><tr><td class="num">43</td><td>DISCO's Consumption August 2025</td><td>official</td>
+<td>18 Sep 2025</td><td><code>862e61dada3cfb79</code></td></tr><tr><td class="num">44</td><td>DISCO's Consumption - September 2025</td><td>official</td>
+<td>17 Oct 2025</td><td><code>78b123dc71a58be9</code></td></tr><tr><td class="num">45</td><td>DISCO's Consumption October 2025</td><td>official</td>
+<td>25 Nov 2025</td><td><code>1bafa2dbd45dd805</code></td></tr><tr><td class="num">46</td><td>November 2025</td><td>official</td>
+<td>02 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">47</td><td>November 2025</td><td>official</td>
+<td>02 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">48</td><td>November 2025</td><td>official</td>
+<td>04 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">49</td><td>December 2025</td><td>official</td>
+<td>14 Jan 2026</td><td><code>967b2b20c47e04eb</code></td></tr><tr><td class="num">50</td><td>DISCOs Consumption January 2026</td><td>official</td>
+<td>01 Feb 2026</td><td><code>7c8df1b2859efbe3</code></td></tr><tr><td class="num">51</td><td>Feb 2026</td><td>official</td>
+<td>18 Mar 2026</td><td><code>7ad041cc71643698</code></td></tr><tr><td class="num">52</td><td>March 2026</td><td>official</td>
+<td>15 Apr 2026</td><td><code>7e030bd3f421ac40</code></td></tr><tr><td class="num">53</td><td>DISCO Consumption</td><td>official</td>
+<td>25 Apr 2026</td><td><code>866e1fa635d88f2c</code></td></tr><tr><td class="num">54</td><td>DISCOs Consumption May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>f762ee879757b30e</code></td></tr><tr><td class="num">55</td><td>DISCOs Consumption Aug 2026</td><td>official</td>
+<td>15 Sep 2026</td><td><code>bbdd8d9dfba38db7</code></td></tr><tr><td class="num">56</td><td>Fuel Mix Sep 2023</td><td>official</td>
+<td>12 Oct 2023</td><td><code>b622e34cf5d30252</code></td></tr><tr><td class="num">57</td><td>Fuel Mix Nov 2023</td><td>official</td>
+<td>12 Dec 2023</td><td><code>09818371624ebed8</code></td></tr><tr><td class="num">58</td><td>Fuel Mix Dec 2023</td><td>official</td>
+<td>17 Jan 2024</td><td><code>8f34098ae7bd92e2</code></td></tr><tr><td class="num">59</td><td>Fuel Mix Jan 2024</td><td>official</td>
+<td>15 Feb 2024</td><td><code>fbc9d07490d9c94a</code></td></tr><tr><td class="num">60</td><td>Fuel Mix Feb 2024</td><td>official</td>
+<td>15 Mar 2024</td><td><code>8a59e0a155d8b539</code></td></tr><tr><td class="num">61</td><td>Fuel Mix Mar 2024</td><td>official</td>
+<td>17 Apr 2024</td><td><code>b5016cb744995266</code></td></tr><tr><td class="num">62</td><td>Fuel Mix April 2024</td><td>official</td>
+<td>15 May 2024</td><td><code>e3188f91646f8b67</code></td></tr><tr><td class="num">63</td><td>Fuel Mix May 2024</td><td>official</td>
+<td>02 Jul 2024</td><td><code>c707957e8846cddb</code></td></tr><tr><td class="num">64</td><td>Fuel Mix June 2024</td><td>official</td>
+<td>07 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">65</td><td>Fuel Mix July 2024</td><td>official</td>
+<td>18 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">66</td><td>Fuel Mix Aug 2024</td><td>official</td>
+<td>20 Sep 2024</td><td><code>088b669e4393a6da</code></td></tr><tr><td class="num">67</td><td>Fuel Mix Sep 2024</td><td>official</td>
+<td>18 Oct 2024</td><td><code>0dba1f799578bea2</code></td></tr><tr><td class="num">68</td><td>Fuel Mix Oct 2024</td><td>official</td>
+<td>18 Nov 2024</td><td><code>8438bba1b0f2f95f</code></td></tr><tr><td class="num">69</td><td>Fuel Mix Nov 24</td><td>official</td>
+<td>18 Dec 2024</td><td><code>c9cd351de18e3968</code></td></tr><tr><td class="num">70</td><td>Fuel Mix Dec 2024</td><td>official</td>
+<td>14 Jan 2025</td><td><code>30898917d9c11e36</code></td></tr><tr><td class="num">71</td><td>Fuel Mix Jan 2025</td><td>official</td>
+<td>25 Feb 2025</td><td><code>35669469178db49b</code></td></tr><tr><td class="num">72</td><td>Fuel Mix Feb 2025</td><td>official</td>
+<td>18 Mar 2025</td><td><code>d68ee78d3ec4f9c1</code></td></tr><tr><td class="num">73</td><td>Fuel Mix Mar 25</td><td>official</td>
+<td>17 Apr 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">74</td><td>Fuel Mix April 2025</td><td>official</td>
+<td>04 Jun 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">75</td><td>Fuel Mix May 2025</td><td>official</td>
+<td>20 Jun 2025</td><td><code>1062a51d55b32ca2</code></td></tr><tr><td class="num">76</td><td>Fuel Mix Jun 25</td><td>official</td>
+<td>28 Jul 2025</td><td><code>72ed5769f64f8fc0</code></td></tr><tr><td class="num">77</td><td>Fuel Mix - July 2025</td><td>official</td>
+<td>19 Aug 2025</td><td><code>bb7bdb4980edd6e8</code></td></tr><tr><td class="num">78</td><td>Fuel Mix August 2025</td><td>official</td>
+<td>18 Sep 2025</td><td><code>2230308e45505f06</code></td></tr><tr><td class="num">79</td><td>Fuel Mix - September 2025</td><td>official</td>
+<td>17 Oct 2025</td><td><code>b5729336c0f05578</code></td></tr><tr><td class="num">80</td><td>Fuel Mix October 2025</td><td>official</td>
+<td>25 Nov 2025</td><td><code>1bafa2dbd45dd805</code></td></tr><tr><td class="num">81</td><td>November 2025</td><td>official</td>
+<td>02 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">82</td><td>December 2025</td><td>official</td>
+<td>14 Jan 2026</td><td><code>967b2b20c47e04eb</code></td></tr><tr><td class="num">83</td><td>Jan 2026</td><td>official</td>
+<td>01 Feb 2026</td><td><code>7c8df1b2859efbe3</code></td></tr><tr><td class="num">84</td><td>Feb 2026</td><td>official</td>
+<td>18 Mar 2026</td><td><code>7ad041cc71643698</code></td></tr><tr><td class="num">85</td><td>March 2026</td><td>official</td>
+<td>15 Apr 2026</td><td><code>7e030bd3f421ac40</code></td></tr><tr><td class="num">86</td><td>Fuel Mix April 2026</td><td>official</td>
+<td>25 Apr 2026</td><td><code>866e1fa635d88f2c</code></td></tr><tr><td class="num">87</td><td>Fuel Mix May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>f762ee879757b30e</code></td></tr><tr><td class="num">88</td><td>Fuel Mix Aug 2026</td><td>official</td>
+<td>15 Sep 2026</td><td><code>bbdd8d9dfba38db7</code></td></tr><tr><td class="num">89</td><td>Hourly Generation Profile Sep 2023</td><td>official</td>
+<td>12 Oct 2023</td><td><code>b622e34cf5d30252</code></td></tr><tr><td class="num">90</td><td>Hourly Generation Profile Nov 23</td><td>official</td>
+<td>12 Dec 2023</td><td><code>09818371624ebed8</code></td></tr><tr><td class="num">91</td><td>Hourly Generation Profile Dec 23</td><td>official</td>
+<td>17 Jan 2024</td><td><code>8f34098ae7bd92e2</code></td></tr><tr><td class="num">92</td><td>Hourly Generation Profile Jan 2024</td><td>official</td>
+<td>15 Feb 2024</td><td><code>fbc9d07490d9c94a</code></td></tr><tr><td class="num">93</td><td>Hourly Generation Profile Feb 24</td><td>official</td>
+<td>15 Mar 2024</td><td><code>8a59e0a155d8b539</code></td></tr><tr><td class="num">94</td><td>Hourly Generation Profile Mar 2024</td><td>official</td>
+<td>17 Apr 2024</td><td><code>b5016cb744995266</code></td></tr><tr><td class="num">95</td><td>Hourly Generation Profile April 2024</td><td>official</td>
+<td>15 May 2024</td><td><code>e3188f91646f8b67</code></td></tr><tr><td class="num">96</td><td>Hourly Generation Profile May 24</td><td>official</td>
+<td>02 Jul 2024</td><td><code>c707957e8846cddb</code></td></tr><tr><td class="num">97</td><td>Hourly Generation Profile June 2024</td><td>official</td>
+<td>07 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">98</td><td>Hourly Generation Profile July 2024</td><td>official</td>
+<td>18 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">99</td><td>Hourly Generation Profile Aug 2024</td><td>official</td>
+<td>20 Sep 2024</td><td><code>088b669e4393a6da</code></td></tr><tr><td class="num">100</td><td>Hourly Generation Profile Sep 2024</td><td>official</td>
+<td>18 Oct 2024</td><td><code>0dba1f799578bea2</code></td></tr><tr><td class="num">101</td><td>Hourly Generation Profile Oct 2024</td><td>official</td>
+<td>18 Nov 2024</td><td><code>8438bba1b0f2f95f</code></td></tr><tr><td class="num">102</td><td>Hourly Generation Profile Nov 24</td><td>official</td>
+<td>18 Dec 2024</td><td><code>c9cd351de18e3968</code></td></tr><tr><td class="num">103</td><td>Hourly Generation Profile Dec 2024</td><td>official</td>
+<td>14 Jan 2025</td><td><code>30898917d9c11e36</code></td></tr><tr><td class="num">104</td><td>Hourly Generation Profile Jan 2025</td><td>official</td>
+<td>25 Feb 2025</td><td><code>35669469178db49b</code></td></tr><tr><td class="num">105</td><td>Hourly Generation Profile Feb 25</td><td>official</td>
+<td>18 Mar 2025</td><td><code>d68ee78d3ec4f9c1</code></td></tr><tr><td class="num">106</td><td>Hourly Generation Profile Mar 25</td><td>official</td>
+<td>17 Apr 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">107</td><td>Hourly Generation Profile Mar 25</td><td>official</td>
+<td>17 Apr 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">108</td><td>Hourly Generation Profile April 25</td><td>official</td>
+<td>04 Jun 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">109</td><td>Hourly Generation Profile May 25</td><td>official</td>
+<td>20 Jun 2025</td><td><code>d9decb914730a4b7</code></td></tr><tr><td class="num">110</td><td>Hourly Generation Profile Jun 25</td><td>official</td>
+<td>28 Jul 2025</td><td><code>e5920cfa15130bb9</code></td></tr><tr><td class="num">111</td><td>Hourly Generation Profile July 25</td><td>official</td>
+<td>19 Aug 2025</td><td><code>e7fd73543fb04483</code></td></tr><tr><td class="num">112</td><td>Hourly Generation Profile August 25</td><td>official</td>
+<td>18 Sep 2025</td><td><code>5daf3a93ab3b5c81</code></td></tr><tr><td class="num">113</td><td>Hourly Generation Profile - September 25</td><td>official</td>
+<td>17 Oct 2025</td><td><code>1dd41b4ed3bded48</code></td></tr><tr><td class="num">114</td><td>Hourly Generation Profile October 2025</td><td>official</td>
+<td>25 Nov 2025</td><td><code>1bafa2dbd45dd805</code></td></tr><tr><td class="num">115</td><td>November 2025</td><td>official</td>
+<td>02 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">116</td><td>December 2025</td><td>official</td>
+<td>14 Jan 2026</td><td><code>967b2b20c47e04eb</code></td></tr><tr><td class="num">117</td><td>Generation Profile Jan 2026</td><td>official</td>
+<td>01 Feb 2026</td><td><code>7c8df1b2859efbe3</code></td></tr><tr><td class="num">118</td><td>Feb 2026</td><td>official</td>
+<td>18 Mar 2026</td><td><code>7ad041cc71643698</code></td></tr><tr><td class="num">119</td><td>March 2026</td><td>official</td>
+<td>15 Apr 2026</td><td><code>7e030bd3f421ac40</code></td></tr><tr><td class="num">120</td><td>Hourly GenerationApril 2026</td><td>official</td>
+<td>25 Apr 2026</td><td><code>866e1fa635d88f2c</code></td></tr><tr><td class="num">121</td><td>Hourly Generation May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>f762ee879757b30e</code></td></tr><tr><td class="num">122</td><td>Hourly Generation Aug 2026</td><td>official</td>
+<td>15 Sep 2026</td><td><code>bbdd8d9dfba38db7</code></td></tr><tr><td class="num">123</td><td>Marginal Price vs Demand</td><td>official</td>
+<td>12 Oct 2023</td><td><code>b622e34cf5d30252</code></td></tr><tr><td class="num">124</td><td>Marginal Price vs Demand</td><td>official</td>
+<td>12 Dec 2023</td><td><code>09818371624ebed8</code></td></tr><tr><td class="num">125</td><td>Marginal Price vs Demand Dec 2023</td><td>official</td>
+<td>17 Jan 2024</td><td><code>8f34098ae7bd92e2</code></td></tr><tr><td class="num">126</td><td>Marginal Price vs Demand Jan 2024</td><td>official</td>
+<td>15 Feb 2024</td><td><code>fbc9d07490d9c94a</code></td></tr><tr><td class="num">127</td><td>Marginal Price vs Demand Feb 24</td><td>official</td>
+<td>15 Mar 2024</td><td><code>8a59e0a155d8b539</code></td></tr><tr><td class="num">128</td><td>Marginal Price vs Demand Mar 2024</td><td>official</td>
+<td>17 Apr 2024</td><td><code>b5016cb744995266</code></td></tr><tr><td class="num">129</td><td>Marginal Price vs Demand April 2024</td><td>official</td>
+<td>15 May 2024</td><td><code>e3188f91646f8b67</code></td></tr><tr><td class="num">130</td><td>Marginal Price vs Demand May 24</td><td>official</td>
+<td>02 Jul 2024</td><td><code>c707957e8846cddb</code></td></tr><tr><td class="num">131</td><td>Marginal Price vs Demand June 2024</td><td>official</td>
+<td>07 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">132</td><td>Marginal Price vs Demand July 2024</td><td>official</td>
+<td>18 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">133</td><td>Marginal Price vs Demand Aug 2024</td><td>official</td>
+<td>20 Sep 2024</td><td><code>088b669e4393a6da</code></td></tr><tr><td class="num">134</td><td>Marginal Price vs Demand Sep 2024</td><td>official</td>
+<td>18 Oct 2024</td><td><code>0dba1f799578bea2</code></td></tr><tr><td class="num">135</td><td>Marginal Price vs Demand Oct 2024</td><td>official</td>
+<td>18 Nov 2024</td><td><code>8438bba1b0f2f95f</code></td></tr><tr><td class="num">136</td><td>Marginal Price vs Demand Nov 24</td><td>official</td>
+<td>18 Dec 2024</td><td><code>c9cd351de18e3968</code></td></tr><tr><td class="num">137</td><td>Marginal Price vs Demand Dec 2024</td><td>official</td>
+<td>14 Jan 2025</td><td><code>30898917d9c11e36</code></td></tr><tr><td class="num">138</td><td>January 2025</td><td>official</td>
+<td>20 Feb 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">139</td><td>Marginal Price vs Demand Feb 2025</td><td>official</td>
+<td>20 Mar 2025</td><td><code>139072714071c120</code></td></tr><tr><td class="num">140</td><td>March 2025 Upload</td><td>official</td>
+<td>20 Apr 2025</td><td><code>a6491078ef0e89e4</code></td></tr><tr><td class="num">141</td><td>April 2025 Upload</td><td>official</td>
+<td>20 May 2025</td><td><code>3dd563e5c0f11f7c</code></td></tr><tr><td class="num">142</td><td>Marginal Cost VS Demand May 2025</td><td>official</td>
+<td>20 Jun 2025</td><td><code>a37a628c1d576d68</code></td></tr><tr><td class="num">143</td><td>Marginal Cost VS Demand Jun 25</td><td>official</td>
+<td>28 Jul 2025</td><td><code>50fbac515d57f1d9</code></td></tr><tr><td class="num">144</td><td>Marginal Price vs Demand - July 2025</td><td>official</td>
+<td>19 Aug 2025</td><td><code>06345ca32c885bdb</code></td></tr><tr><td class="num">145</td><td>Marginal Price vs Demand - August 2025</td><td>official</td>
+<td>18 Sep 2025</td><td><code>f238fdcc4bf37e2f</code></td></tr><tr><td class="num">146</td><td>Marginal Price vs Demand - September 2025</td><td>official</td>
+<td>17 Oct 2025</td><td><code>35716e02c14fa56e</code></td></tr><tr><td class="num">147</td><td>Marginal Cost VS Demand October 2025</td><td>official</td>
+<td>25 Nov 2025</td><td><code>1bafa2dbd45dd805</code></td></tr><tr><td class="num">148</td><td>November  2025</td><td>official</td>
+<td>20 Dec 2025</td><td><code>816377442dcbb1fc</code></td></tr><tr><td class="num">149</td><td>December 2025</td><td>official</td>
+<td>14 Jan 2026</td><td><code>967b2b20c47e04eb</code></td></tr><tr><td class="num">150</td><td>January 2026</td><td>official</td>
+<td>20 Feb 2026</td><td><code>71dd98e0fee22fc3</code></td></tr><tr><td class="num">151</td><td>Feb 2026</td><td>official</td>
+<td>20 Mar 2026</td><td><code>7ad041cc71643698</code></td></tr><tr><td class="num">152</td><td>March 2026</td><td>official</td>
+<td>15 Apr 2026</td><td><code>7e030bd3f421ac40</code></td></tr><tr><td class="num">153</td><td>Marginal Price April 2026</td><td>official</td>
+<td>25 Apr 2026</td><td><code>866e1fa635d88f2c</code></td></tr><tr><td class="num">154</td><td>Marginal Price Vs demand May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>f762ee879757b30e</code></td></tr><tr><td class="num">155</td><td>Marginal Price Vs demand Aug 2026</td><td>official</td>
+<td>15 Sep 2026</td><td><code>bbdd8d9dfba38db7</code></td></tr><tr><td class="num">156</td><td>Market Statistics Sep 2023</td><td>official</td>
+<td>12 Oct 2023</td><td><code>b622e34cf5d30252</code></td></tr><tr><td class="num">157</td><td>Market Statistics Oct 2023</td><td>official</td>
+<td>10 Nov 2023</td><td><code>95018c8918d371a7</code></td></tr><tr><td class="num">158</td><td>Market Statistics Nov 23</td><td>official</td>
+<td>12 Dec 2023</td><td><code>09818371624ebed8</code></td></tr><tr><td class="num">159</td><td>Market Statistics Dec 23</td><td>official</td>
+<td>17 Jan 2024</td><td><code>8f34098ae7bd92e2</code></td></tr><tr><td class="num">160</td><td>Market Statistics Jan 24</td><td>official</td>
+<td>15 Feb 2024</td><td><code>fbc9d07490d9c94a</code></td></tr><tr><td class="num">161</td><td>Market Statistics Feb 24</td><td>official</td>
+<td>15 Mar 2024</td><td><code>8a59e0a155d8b539</code></td></tr><tr><td class="num">162</td><td>Market Statistics Mar 24</td><td>official</td>
+<td>17 Apr 2024</td><td><code>b5016cb744995266</code></td></tr><tr><td class="num">163</td><td>Market Statistics April 24</td><td>official</td>
+<td>15 May 2024</td><td><code>e3188f91646f8b67</code></td></tr><tr><td class="num">164</td><td>Market Statistics May 24</td><td>official</td>
+<td>02 Jul 2024</td><td><code>c707957e8846cddb</code></td></tr><tr><td class="num">165</td><td>Market Statistics June 24</td><td>official</td>
+<td>07 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">166</td><td>Market Statistics July 24</td><td>official</td>
+<td>18 Aug 2024</td><td><code>a56484f3ff8afef6</code></td></tr><tr><td class="num">167</td><td>Market Statistics Aug 24</td><td>official</td>
+<td>20 Sep 2024</td><td><code>088b669e4393a6da</code></td></tr><tr><td class="num">168</td><td>Market Statistics Sep 24</td><td>official</td>
+<td>18 Oct 2024</td><td><code>0dba1f799578bea2</code></td></tr><tr><td class="num">169</td><td>Market Statistics Oct 24</td><td>official</td>
+<td>18 Nov 2024</td><td><code>8438bba1b0f2f95f</code></td></tr><tr><td class="num">170</td><td>Market Statistics Nov 24</td><td>official</td>
+<td>18 Dec 2024</td><td><code>c9cd351de18e3968</code></td></tr><tr><td class="num">171</td><td>Market Statistics Dec 24</td><td>official</td>
+<td>14 Jan 2025</td><td><code>30898917d9c11e36</code></td></tr><tr><td class="num">172</td><td>Market Statistics Jan 25</td><td>official</td>
+<td>25 Feb 2025</td><td><code>35669469178db49b</code></td></tr><tr><td class="num">173</td><td>Market Statistics Feb 25</td><td>official</td>
+<td>18 Mar 2025</td><td><code>d68ee78d3ec4f9c1</code></td></tr><tr><td class="num">174</td><td>Market Statistics Mar 25</td><td>official</td>
+<td>17 Apr 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">175</td><td>Market Statistics April 2025</td><td>official</td>
+<td>04 Jun 2025</td><td><code>f2cf7e0bba05f4f9</code></td></tr><tr><td class="num">176</td><td>Market Statistics May 2025</td><td>official</td>
+<td>20 Jun 2025</td><td><code>cd1158ec04c5c05b</code></td></tr><tr><td class="num">177</td><td>Market Statistics - July 2025</td><td>official</td>
+<td>19 Aug 2025</td><td><code>025e5b195621a597</code></td></tr><tr><td class="num">178</td><td>Market Statistics - August 2025</td><td>official</td>
+<td>18 Sep 2025</td><td><code>935584577b8d042f</code></td></tr><tr><td class="num">179</td><td>Market Statistics - September 2025</td><td>official</td>
+<td>17 Oct 2025</td><td><code>658dbfcd7bc942cb</code></td></tr><tr><td class="num">180</td><td>Market Statistics Oct 2025</td><td>official</td>
+<td>25 Nov 2025</td><td><code>1bafa2dbd45dd805</code></td></tr><tr><td class="num">181</td><td>November 2025</td><td>official</td>
+<td>02 Dec 2025</td><td><code>8f946c10a74c94e2</code></td></tr><tr><td class="num">182</td><td>December 2025</td><td>official</td>
+<td>14 Jan 2026</td><td><code>967b2b20c47e04eb</code></td></tr><tr><td class="num">183</td><td>January 2026</td><td>official</td>
+<td>17 Feb 2026</td><td><code>dabb885d5d5c82dc</code></td></tr><tr><td class="num">184</td><td>March 2026</td><td>official</td>
+<td>15 Apr 2026</td><td><code>7e030bd3f421ac40</code></td></tr><tr><td class="num">185</td><td>System April 2026</td><td>official</td>
+<td>25 Apr 2026</td><td><code>866e1fa635d88f2c</code></td></tr><tr><td class="num">186</td><td>System May 2026</td><td>official</td>
+<td>15 Jun 2026</td><td><code>f762ee879757b30e</code></td></tr><tr><td class="num">187</td><td>System at a Glance Aug 2026</td><td>official</td>
+<td>15 Sep 2026</td><td><code>bbdd8d9dfba38db7</code></td></tr><tr><td class="num">188</td><td>XWDISCO-s Energy Purchase Data - 1st QTR (JUL 25 to SEP 25).xlsx</td><td>official</td>
+<td></td><td><code>f085f1c7a57f4462</code></td></tr><tr><td class="num">189</td><td>XWDISCO-s Energy Purchase Data - 2nd QTR (OCT 25 to DEC 25).xlsx</td><td>official</td>
+<td></td><td><code>12afa3bafbce5b38</code></td></tr><tr><td class="num">190</td><td>XWDISCO-s Energy Purchase Data - 3rd QTR (JAN 26 to MAR 26).xlsx</td><td>official</td>
+<td></td><td><code>a4377cdd79be9ad2</code></td></tr><tr><td class="num">191</td><td>XWDISCOS- Energy Purchase Data - July 2024 to June 2025.xlsx</td><td>official</td>
+<td></td><td><code>6432814b117386c2</code></td></tr><tr><td class="num">192</td><td>XWDISCOs Energy Purchase Data - 4th QTR (APR 26 to JUN 26).xlsx</td><td>official</td>
+<td></td><td><code>33eecbe99fc0cfd0</code></td></tr><tr><td class="num">193</td><td>CMO Historical Data Monthly</td><td>reference</td>
+<td></td><td><code>9fdcfa8a2aed9a1b</code></td></tr><tr><td class="num">194</td><td>Decision of Authority - Use of System Charges</td><td>reference</td>
+<td>15 Sep 2026</td><td><code>ef0a730b660e1cc1</code></td></tr><tr><td class="num">195</td><td>CS Bilateral Transaction Model</td><td>reference</td>
+<td>22 Sep 2026</td><td><code>7c2887b180765187</code></td></tr><tr><td class="num">196</td><td>Hourly Solar Profile (Typical Generation Profile of 100MW Solar Plant in Sindh Region)</td><td>reference</td>
+<td>18 Sep 2025</td><td><code>67a1f22b7dde55b9</code></td></tr><tr><td class="num">197</td><td>Hourly Wind Profile (Typical Generation Profile of 50MW Wind Plant in Jhimpir Region)</td><td>reference</td>
+<td>18 Sep 2025</td><td><code>47d5f174ae08426b</code></td></tr><tr><td class="num">198</td><td>BPC Location Data</td><td>reference</td>
+<td>30 Aug 2026</td><td><code>99a2b10f5a8771db</code></td></tr>
+</table>
+</main></body></html>
