@@ -181,7 +181,11 @@ function heatmap(host, o) {
   const cw = (W - m.l - m.r) / colsN, ch = o.cellH || Math.max(4, Math.min(10, 520 / rowsN));
   const H = m.t + m.b + ch * rowsN;
   const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, width: "100%", height: H, role: "img" }, host);
-  const ramp = o.ramp || ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"];
+  // one-hue orange ramp, cheap to expensive; in dark mode it runs dark to bright (both validated)
+  const t = document.documentElement.dataset.theme;
+  const dark = t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const ramp = o.ramp || (dark ? ["#834405", "#a05609", "#c46c12", "#e3862a", "#f5ac55", "#fbd7a6"]
+                               : ["#f3a347", "#dd7f1a", "#bb640b", "#944d06", "#6c3703", "#482300"]);
   const max = o.max, min = o.min ?? 0;
   const color = (v) => { if (v == null) return "transparent"; const t = Math.min(Math.max((v - min) / (max - min), 0), 0.9999); return ramp[Math.floor(t * ramp.length)]; };
   o.cols.forEach((c, j) => { if (j % 3 === 0) el("text", { x: m.l + j * cw + cw / 2, y: 12, class: "tick", "text-anchor": "middle" }, svg).textContent = c; });

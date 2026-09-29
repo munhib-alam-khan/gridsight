@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GridSight · Pakistan power market</title>
 <meta name="description" content="Pakistan's wholesale power price: what happened, what comes next, and what open access would cost a factory.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d366b'/%3E%3Cpath d='M6 22 L12 14 L17 19 L26 8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='1.5' y='13' width='5.5' height='9.5' rx='2.2' fill='%231890d0'/%3E%3Crect x='9.25' y='7.5' width='5.5' height='15' rx='2.2' fill='%238cc63f'/%3E%3Crect x='17' y='1.5' width='5.5' height='21' rx='2.2' fill='%23fb9521'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="app.css">
+<meta name="theme-color" content="#fb9521">
 </head>
 <body>
 <div class="top">
   <div class="wrap topin">
-    <a class="brand" href="#market"><span class="mark"></span>GridSight</a>
+    <a class="brand" href="#market" aria-label="GridSight home"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="13" width="5.5" height="9.5" rx="2.2" fill="#1890d0"/><rect x="9.25" y="7.5" width="5.5" height="15" rx="2.2" fill="#8cc63f"/><rect x="17" y="1.5" width="5.5" height="21" rx="2.2" fill="#fb9521"/></svg><span>Grid<b>Sight</b></span></a>
     <nav id="nav">
       <a href="#market">Market</a>
       <a href="#forecast">Forecasts</a>
@@ -27,6 +30,7 @@
 <footer class="wrap foot">
   <span id="freshness"></span>
   <span>Sources: ISMO, CPPA-G, NEPRA, World Bank, Open-Meteo. Every figure traces to a checksummed source file.</span>
+  <span class="by">A KSBL capstone project. Independent work, not an official K-Electric product.</span>
 </footer>
 <script>window.GS_STATIC = true;</script>
 <script src="charts.js"></script>

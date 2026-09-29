@@ -37,6 +37,10 @@ const H24 = [...Array(24).keys()];
 const EXT = 50;
 
 // ---------------------------------------------------------------- theme
+function isDark() {
+  const t = document.documentElement.dataset.theme;
+  return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+}
 (function theme() {
   const saved = (() => { try { return localStorage.getItem("gs-theme"); } catch { return null; } })();
   if (saved) document.documentElement.dataset.theme = saved;
@@ -89,7 +93,7 @@ async function market() {
     <p class="cap">Hour-beginning, Pakistan Standard Time. The dashed red line is Rs ${EXT}/kWh, the threshold KE uses for extreme hours.</p>
 
     <h2>Every hour of the last three months</h2>
-    <p class="sub">Each row is a day, each column an hour. Darker is more expensive.</p>
+    <p class="sub">Each row is a day, each column an hour. ${isDark() ? "Brighter" : "Darker"} is more expensive.</p>
     <div id="c-heat"></div>
 
     <h2>Month by month</h2>
