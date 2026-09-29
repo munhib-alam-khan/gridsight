@@ -99,7 +99,7 @@ async function market() {
     </div>
     <p class="cap">Two charts, one scale each. Before April 2026 only two hours in the whole record reached Rs ${EXT}.</p>
 
-    <h2>What set the price</h2>
+    <h2>Oil, and the cost of each fuel</h2>
     <div class="cols">
       <div>
         <h3>Brent crude, US$ per barrel, and the fuel-shock signal</h3>
@@ -113,7 +113,8 @@ async function market() {
         ${d.cppa.rows.map((r) => `<tr><td>${esc(r.fuel)}</td><td class="n">${r.rs_kwh.toFixed(1)}</td><td class="n">${r.prev == null ? "–" : r.prev.toFixed(1)}</td><td class="n">${r.twh.toFixed(2)}</td></tr>`).join("")}</table>
         <p class="cap">CPPA-G energy purchases: fuel charges divided by energy bought. The most expensive fuel that runs sets the evening price; in 2026 that is furnace oil.</p>` : ""}
       </div>
-    </div>`;
+    </div>
+    ${setterBlock(d)}`;
 
   lineChart($("#c-profile"), {
     x: H24, series: [
@@ -151,6 +152,43 @@ async function market() {
   });
   // status markers on the brent chart
   markStatus($("#c-brent"), fs);
+  if (d.setter) {
+    const sm = d.setter.monthly, cols = ["--series-2", "--series-1", "--ink-2", "--series-3"];
+    d.setter.groups.forEach((g, i) => lineChart($("#c-setter-" + i), {
+      x: sm.map((r) => r.month), xType: "time", title: g,
+      series: [{ name: g, values: sm.map((r) => r[g] * 100), color: css(cols[i]), width: 2, label: false }],
+      xTicks: sm.filter((r) => new Date(r.month).getMonth() === 0).map((r) => r.month), xTick: (v) => new Date(v).getFullYear(),
+      tipX: fmt.month, yFmt: (v) => v.toFixed(0) + "%", height: 170, yMin: 0, yMax: 70, rightPad: 12,
+    }));
+  }
+}
+
+function setterBlock(d) {
+  const S = d.setter;
+  if (!S) return "";
+  const m = S.month;
+  const intro = `<h2>Which plant set the price</h2>
+    <p class="sub">The official price is the running cost of the last plant ISMO dispatched. Matching every hour's price against ISMO's weekly merit order (each plant's cost in Rs/kWh) shows which plant that was.</p>`;
+  if (!m) return intro + `<p class="sub">No merit order has been transcribed yet for ${esc(d.month_label)}.</p>`;
+  return intro + `
+    ${S.sentence ? `<div class="lede"><p>${esc(S.sentence)}</p></div>` : ""}
+    <div class="cols">
+      <div>
+        <h3>Fuel of the price-setting plant, ${esc(d.month_label)}</h3>
+        <table><tr><th>Fuel</th><th class="n">All hours</th><th class="n">Evening</th><th class="n">Avg price</th></tr>
+        ${m.fuels.map((r) => `<tr><td>${esc(r.fuel)}</td><td class="n">${pct(r.share)}</td><td class="n">${r.share_evening == null ? "–" : pct(r.share_evening)}</td><td class="n">${r.mean_price.toFixed(1)}</td></tr>`).join("")}</table>
+        <p class="cap">Evening = 18:00 to midnight. "Between two fuels": the price lies between two plants on different fuels, so neither can be named. Exact plant known for ${pct(m.exact_share)} of hours; fuel known for ${pct(m.known_share)}.</p>
+      </div>
+      <div>
+        <h3>Plants that set it most often</h3>
+        <table><tr><th>Plant</th><th>Fuel</th><th class="n">Hours</th><th class="n">Rs/kWh</th></tr>
+        ${m.plants.map((r) => `<tr><td>${esc(r.plant)}</td><td>${esc(r.fuel)}</td><td class="n">${r.hours}</td><td class="n">${r.cost.toFixed(2)}</td></tr>`).join("")}</table>
+        <p class="cap">Hours where the price equals the plant's cost to four decimals. Rs/kWh is that cost.</p>
+      </div>
+    </div>
+    <h3 style="margin-top:22px">Share of hours each fuel set the price, by month</h3>
+    <div class="cols even">${S.groups.map((g, i) => `<div><h3 class="mini">${esc(g)}</h3><div id="c-setter-${i}"></div></div>`).join("")}</div>
+    <p class="cap">Same scale on all four. Oil = furnace oil, diesel and oil/gas mixes. The rest of each month lies between two fuels. In April 2026 oil set the price in more than half of all hours. Source: ${S.n_docs} ISMO merit orders, ${fmt.month(S.covered_from)} to ${fmt.month(S.covered_to)}, transcribed from scans and checked line by line.</p>`;
 }
 
 function markStatus(host, fs) {
@@ -211,6 +249,10 @@ async function forecast() {
       <div><h3>Next month: average error by month</h3><div id="c-mae-n"></div></div>
     </div>
     <p class="cap">Rs/kWh. Every model's error jumped with the April 2026 oil shock. ISMO's projection, built on September 2025 inputs, is compared at the monthly horizon, where it belongs; in the calm months of early 2026 it was the more accurate of the two.</p>
+
+    <h2>Live record</h2>
+    <p class="sub">Forecasts made before ISMO published the prices, scored once it did. A backtest can only simulate this; these are the real thing, and the record grows every month.</p>
+    ${trackTable(d.track)}
 
     <h3>Look inside any month</h3>
     <div class="filters">
@@ -292,6 +334,19 @@ function metricsTable(d, L) {
     <td class="n">${cell(per(h, m, "validation"))}</td><td class="n"><b>${cell(t)}</b></td><td class="n">${cell(per(h, m, "test, calm"))}</td><td class="n">${cell(per(h, m, "test, oil"))}</td>
     <td class="n">${t.rmse == null ? "–" : t.rmse.toFixed(2)}</td><td class="n">${t.coverage_80 == null ? "–" : pct(t.coverage_80)}</td></tr>`; }).join("")}</table>
   <p class="cap">Average error: mean absolute difference from the published price, Rs/kWh per hour. Highlighted: what the site serves. The pre-registered day-ahead model did not beat "same as yesterday" on average error in the test, though it cut large misses; the blend did beat it, but was chosen after seeing the test, so its real record starts with the live forecasts from September 2026. An honest 80% range holds about 80% of the time; ours held less in the oil shock, which we report rather than tune away.</p>`;
+}
+
+function trackTable(t) {
+  if (!t || !t.length) return `<p class="muted">No live forecasts yet.</p>`;
+  const rows = t.slice().sort((a, b) => (a.made_on < b.made_on ? 1 : -1));
+  const status = (r) => r.status === "waiting" ? `<span class="pill info">waiting for ISMO</span>` : r.status === "scored" ? `<span class="pill good">scored</span>` : `<span class="pill warning">partly scored</span>`;
+  const cell = (v) => (v == null ? "–" : rs(v, 2));
+  const waiting = rows.filter((r) => r.status === "waiting").length;
+  return `<table><tr><th>Made on</th><th>Forecast for</th><th>Horizon</th><th class="n">Forecast avg</th><th class="n">Actual avg</th><th class="n">Our error</th><th class="n">Same as last known</th><th class="n">ISMO projection</th><th class="n">80% range held</th><th>Status</th></tr>
+  ${rows.map((r) => `<tr><td>${fmt.day(r.made_on)} ${new Date(r.made_on).getFullYear()}</td><td>${esc(r.target)}</td><td>${r.horizon.replace("_", " ")}</td>
+    <td class="n">${cell(r.mean_forecast)}</td><td class="n">${cell(r.mean_actual)}</td><td class="n"><b>${cell(r.mae)}</b></td><td class="n">${cell(r.mae_persistence)}</td>
+    <td class="n">${cell(r.mae_ismo)}</td><td class="n">${r.coverage_80 == null ? "–" : pct(r.coverage_80)}</td><td>${status(r)}</td></tr>`).join("")}</table>
+  <p class="cap">Error: average absolute miss in Rs/kWh per hour. ${waiting ? `${waiting} forecast${waiting === 1 ? " is" : "s are"} waiting: ISMO posts a month's prices 2 to 5 weeks after it ends, and each is scored on the next monthly run after that.` : ""}</p>`;
 }
 
 function extremeTable(e) {
@@ -472,10 +527,11 @@ async function method() {
     <p class="eyebrow">Method</p>
     <h1>How GridSight works, and what it can't do.</h1>
     <ol class="steps">
-      <li><b>Collect.</b> Scripts download ISMO's full archive through the same interface its website uses, plus CPPA-G's monthly energy purchases, NEPRA's grid-charge decision, World Bank fuel prices and hourly weather for twelve load centres. Every file is logged with its checksum.</li>
+      <li><b>Collect.</b> Scripts download ISMO's full archive through the same interface its website uses, plus CPPA-G's monthly energy purchases, NEPRA's grid-charge decision, World Bank fuel prices, hourly weather for twelve load centres, and the weather forecast as it was issued the day before. ISMO's weekly merit orders are scanned images, so they were transcribed by hand and checked line by line. Every file is logged with its checksum.</li>
       <li><b>Build.</b> A DuckDB warehouse (star schema, times in Pakistan Standard Time, hour-beginning) keeps every published version of the price, so any revision is visible. Rebuild takes about two minutes.</li>
       <li><b>Check.</b> Automated checks for completeness, impossible values, silent revisions, generation vs demand, misfiled and stale workbooks, and freshness, with a report every run.</li>
-      <li><b>Forecast.</b> Day-ahead (gradient-boosted quantile regression, retrained weekly) and next-month (three-month profile). Settings were fixed on Jul–Dec 2025 before any 2026 result was seen, and every test is walk-forward.</li>
+      <li><b>Forecast.</b> Day-ahead (gradient-boosted quantile regression, retrained weekly) and next-month (three-month profile). Settings were fixed on Jul–Dec 2025 before any 2026 result was seen, and every test is walk-forward, using only the weather forecast that existed the day before.</li>
+      <li><b>Explain.</b> Each hour's price is matched to the merit order in force, which shows the plant, or at least the fuel, that set it.</li>
       <li><b>Decide.</b> The open-access calculator prices a consumer's load hour by hour under NEPRA's grid charges and ISMO's own CTBCM assumptions.</li>
       <li><b>Report.</b> A monthly brief, written from the warehouse, as HTML and PDF.</li>
     </ol>
@@ -483,7 +539,7 @@ async function method() {
     <ul style="max-width:52em">
       <li>Two years of hourly prices, with one regime change (April 2026). Ranges were too narrow during the shock; they are reported as they are.</li>
       <li>The day-ahead forecast assumes daily price access (as a market participant has). The public file arrives monthly.</li>
-      <li>Weather at the forecast hour uses observed values in testing, standing in for a next-day weather forecast.</li>
+      <li>Which plant set the price is known for about half of all hours; for the rest the price sits between two plants' costs. Merit orders after the latest transcribed one are not yet covered.</li>
       <li>The capacity price in the calculator is ISMO's planning value; the market price for capacity has not yet been discovered.</li>
       <li>Hourly demand is published only for FY2025, so it is not used as a forecast input.</li>
     </ul>`;

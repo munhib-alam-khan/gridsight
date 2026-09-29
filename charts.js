@@ -47,7 +47,7 @@ const fmt = {
 
 // opts: {x:[...], xType:'num'|'time', series:[{name, values, color, dash, width, label}],
 //        band:{lo, hi, color, name}, yLabel, xTick:(v)=>str, xTicks:[...], tipX:(v)=>str,
-//        yFmt, ref:{y,label}, height, yMin}
+//        yFmt, ref:{y,label}, height, yMin, yMax}
 function lineChart(host, o) {
   host.innerHTML = ""; host.classList.add("chart");
   const W = Math.max(host.clientWidth, 300), H = o.height || 260;
@@ -60,7 +60,7 @@ function lineChart(host, o) {
   o.series.forEach((s) => all.push(...s.values.filter((v) => v != null)));
   if (o.band) { all.push(...o.band.lo.filter((v) => v != null), ...o.band.hi.filter((v) => v != null)); }
   if (o.ref) all.push(o.ref.y);
-  const yt = niceTicks(o.yMin ?? Math.min(0, ...all), Math.max(...all));
+  const yt = niceTicks(o.yMin ?? Math.min(0, ...all), o.yMax ?? Math.max(...all));
   const ymin = yt[0], ymax = yt[yt.length - 1];
   const X = (v) => m.l + ((v - xmin) / (xmax - xmin || 1)) * (W - m.l - m.r);
   const Y = (v) => H - m.b - ((v - ymin) / (ymax - ymin || 1)) * (H - m.t - m.b);
